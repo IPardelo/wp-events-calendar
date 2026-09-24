@@ -1,0 +1,104 @@
+/* WP Events Calendar — lista pública del shortcode [eventos].
+ * Las variables se pueden sobrescribir desde el tema:
+ * .wpec-events { --wpec-accent: #c0392b; }
+ */
+.wpec-events {
+	--wpec-accent: currentColor;
+	--wpec-border: rgba(127, 127, 127, 0.25);
+	--wpec-muted: rgba(127, 127, 127, 1);
+	margin: 1.5em 0;
+}
+
+.wpec-events .wpec-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.wpec-events .wpec-event {
+	display: flex;
+	gap: 1em;
+	align-items: flex-start;
+	margin: 0;
+	padding: 1em 0;
+	border-bottom: 1px solid var(--wpec-border);
+}
+
+.wpec-events .wpec-event:first-child {
+	border-top: 1px solid var(--wpec-border);
+}
+
+.wpec-events .wpec-badge {
+	flex: 0 0 4.25em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.4em 0.25em;
+	border: 2px solid var(--wpec-accent);
+	border-radius: 6px;
+	line-height: 1.1;
+	text-align: center;
+}
+
+.wpec-events .wpec-badge__day {
+	font-size: 1.6em;
+	font-weight: 700;
+}
+
+.wpec-events .wpec-badge__month {
+	font-size: 0.85em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.wpec-events .wpec-badge__year {
+	font-size: 0.7em;
+	color: var(--wpec-muted);
+}
+
+.wpec-events .wpec-info {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.wpec-events .wpec-info p {
+	margin: 0 0 0.25em;
+}
+
+.wpec-events .wpec-show {
+	font-size: 1.15em;
+	font-weight: 700;
+}
+
+.wpec-events .wpec-when {
+	font-weight: 600;
+}
+
+.wpec-events .wpec-where {
+	color: var(--wpec-muted);
+	font-size: 0.95em;
+}
+
+.wpec-events .wpec-venue {
+	font-weight: 600;
+}
+
+.wpec-events .wpec-place {
+	display: block;
+}
+
+.wpec-events .wpec-sep {
+	opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+	.wpec-events .wpec-event {
+		gap: 0.75em;
+	}
+	.wpec-events .wpec-badge {
+		flex-basis: 3.5em;
+	}
+	.wpec-events .wpec-badge__day {
+		font-size: 1.3em;
+	}
+}

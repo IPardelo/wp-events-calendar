@@ -1,0 +1,685 @@
+# Copyright (C) 2026 IPardelo
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress events calendar 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpec\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-24T18:47:08+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wp-events-calendar\n"
+
+#. Plugin Name of the plugin
+#: wp-events-calendar.php
+msgid "Wordpress events calendar"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wp-events-calendar.php
+msgid "https://github.com/IPardelo/wp-events-calendar"
+msgstr ""
+
+#. Description of the plugin
+#: wp-events-calendar.php
+msgid "Mostra os teus eventos dunha forma sinxela."
+msgstr ""
+
+#. Author of the plugin
+#: wp-events-calendar.php
+msgid "IPardelo"
+msgstr ""
+
+#: includes/class-wpec-admin.php:42
+#: includes/class-wpec-admin.php:43
+#: includes/class-wpec-admin.php:50
+#: includes/class-wpec-admin.php:703
+#: includes/class-wpec-admin.php:1181
+#: includes/class-wpec-admin.php:1263
+msgid "Events"
+msgstr ""
+
+#: includes/class-wpec-admin.php:51
+#: includes/class-wpec-admin.php:885
+#: includes/class-wpec-admin.php:1209
+msgid "Locations"
+msgstr ""
+
+#: includes/class-wpec-admin.php:52
+#: includes/class-wpec-admin.php:983
+#: includes/class-wpec-admin.php:1177
+#: includes/class-wpec-admin.php:1372
+msgid "Shows"
+msgstr ""
+
+#: includes/class-wpec-admin.php:53
+#: includes/class-wpec-admin.php:1254
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/class-wpec-admin.php:165
+msgid "The start date is required and must be valid."
+msgstr ""
+
+#: includes/class-wpec-admin.php:168
+msgid "The end date cannot be earlier than the start date."
+msgstr ""
+
+#: includes/class-wpec-admin.php:174
+msgid "Select a location."
+msgstr ""
+
+#: includes/class-wpec-admin.php:177
+msgid "Select a show."
+msgstr ""
+
+#: includes/class-wpec-admin.php:192
+msgid "The province is required."
+msgstr ""
+
+#: includes/class-wpec-admin.php:195
+msgid "The municipality is required."
+msgstr ""
+
+#: includes/class-wpec-admin.php:198
+msgid "The venue name is required."
+msgstr ""
+
+#: includes/class-wpec-admin.php:212
+msgid "The show name is required."
+msgstr ""
+
+#: includes/class-wpec-admin.php:215
+msgid "The URL is not valid."
+msgstr ""
+
+#: includes/class-wpec-admin.php:231
+msgid "The name is required."
+msgstr ""
+
+#: includes/class-wpec-admin.php:237
+msgid "The shortcode can only contain letters, numbers and underscores."
+msgstr ""
+
+#. translators: %s: shortcode tag
+#: includes/class-wpec-admin.php:242
+#, php-format
+msgid "The shortcode [%s] is already in use. Choose another one."
+msgstr ""
+
+#. translators: %s: shortcode tag
+#: includes/class-wpec-admin.php:245
+#, php-format
+msgid "Another plugin or the theme already uses the shortcode [%s]. Choose another one."
+msgstr ""
+
+#: includes/class-wpec-admin.php:286
+#: includes/class-wpec-admin.php:320
+msgid "Select an XML file."
+msgstr ""
+
+#: includes/class-wpec-admin.php:292
+#: includes/class-wpec-admin.php:325
+msgid "The file must have the .xml extension."
+msgstr ""
+
+#: includes/class-wpec-admin.php:296
+#: includes/class-wpec-admin.php:329
+msgid "The file is too large (maximum 5 MB)."
+msgstr ""
+
+#: includes/class-wpec-admin.php:300
+#: includes/class-wpec-admin.php:333
+msgid "The uploaded file could not be read."
+msgstr ""
+
+#: includes/class-wpec-admin.php:438
+msgid "Item added."
+msgstr ""
+
+#: includes/class-wpec-admin.php:439
+msgid "Changes saved."
+msgstr ""
+
+#: includes/class-wpec-admin.php:440
+msgid "Item deleted."
+msgstr ""
+
+#: includes/class-wpec-admin.php:441
+msgid "It cannot be deleted: there are events using it. Change or delete those events first."
+msgstr ""
+
+#: includes/class-wpec-admin.php:442
+msgid "The import preview has expired. Please upload the file again."
+msgstr ""
+
+#: includes/class-wpec-admin.php:480
+msgid "Edit"
+msgstr ""
+
+#: includes/class-wpec-admin.php:482
+msgid "Are you sure you want to delete it?"
+msgstr ""
+
+#: includes/class-wpec-admin.php:483
+msgid "Delete"
+msgstr ""
+
+#: includes/class-wpec-admin.php:494
+msgid "Add new"
+msgstr ""
+
+#: includes/class-wpec-admin.php:500
+#: includes/class-wpec-admin.php:1087
+#: includes/class-wpec-admin.php:1372
+msgid "Import / Export"
+msgstr ""
+
+#: includes/class-wpec-admin.php:518
+msgid "Save changes"
+msgstr ""
+
+#: includes/class-wpec-admin.php:518
+msgid "Add"
+msgstr ""
+
+#: includes/class-wpec-admin.php:519
+msgid "Cancel"
+msgstr ""
+
+#: includes/class-wpec-admin.php:611
+msgid "Search…"
+msgstr ""
+
+#: includes/class-wpec-admin.php:615
+msgid "Filter"
+msgstr ""
+
+#: includes/class-wpec-admin.php:617
+msgid "Clear filters"
+msgstr ""
+
+#. translators: %d: number of results
+#: includes/class-wpec-admin.php:622
+#, php-format
+msgid "%d result"
+msgid_plural "%d results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wpec-admin.php:706
+#: includes/class-wpec-admin.php:1241
+msgid "Upcoming"
+msgstr ""
+
+#: includes/class-wpec-admin.php:707
+#: includes/class-wpec-admin.php:1242
+msgid "Past"
+msgstr ""
+
+#: includes/class-wpec-admin.php:708
+#: includes/class-wpec-admin.php:1243
+msgid "All"
+msgstr ""
+
+#: includes/class-wpec-admin.php:730
+#: includes/class-wpec-admin.php:990
+msgid "All shows"
+msgstr ""
+
+#: includes/class-wpec-admin.php:735
+msgid "All locations"
+msgstr ""
+
+#: includes/class-wpec-admin.php:738
+msgid "From"
+msgstr ""
+
+#: includes/class-wpec-admin.php:740
+msgid "to"
+msgstr ""
+
+#: includes/class-wpec-admin.php:746
+msgid "Date"
+msgstr ""
+
+#: includes/class-wpec-admin.php:747
+#: includes/class-wpec-admin.php:835
+msgid "Time"
+msgstr ""
+
+#: includes/class-wpec-admin.php:748
+#: includes/class-wpec-admin.php:857
+#: includes/class-wpec-admin.php:1182
+msgid "Show"
+msgstr ""
+
+#: includes/class-wpec-admin.php:749
+#: includes/class-wpec-admin.php:846
+msgid "Location"
+msgstr ""
+
+#: includes/class-wpec-admin.php:750
+#: includes/class-wpec-admin.php:912
+#: includes/class-wpec-admin.php:996
+#: includes/class-wpec-admin.php:1265
+msgid "Actions"
+msgstr ""
+
+#: includes/class-wpec-admin.php:754
+msgid "No events found."
+msgstr ""
+
+#: includes/class-wpec-admin.php:760
+msgid "(show deleted)"
+msgstr ""
+
+#: includes/class-wpec-admin.php:774
+msgid "(location deleted)"
+msgstr ""
+
+#: includes/class-wpec-admin.php:803
+msgid "Edit event"
+msgstr ""
+
+#: includes/class-wpec-admin.php:803
+msgid "New event"
+msgstr ""
+
+#. translators: 1: link to locations, 2: link to shows
+#: includes/class-wpec-admin.php:809
+#, php-format
+msgid "Before creating an event you need at least one %1$s and one %2$s."
+msgstr ""
+
+#: includes/class-wpec-admin.php:810
+msgid "location"
+msgstr ""
+
+#: includes/class-wpec-admin.php:811
+msgid "show"
+msgstr ""
+
+#: includes/class-wpec-admin.php:823
+msgid "Start date"
+msgstr ""
+
+#: includes/class-wpec-admin.php:829
+msgid "End date"
+msgstr ""
+
+#: includes/class-wpec-admin.php:832
+msgid "Leave it empty if the event lasts a single day."
+msgstr ""
+
+#: includes/class-wpec-admin.php:838
+msgid "Optional. If left empty it will not be shown in the list."
+msgstr ""
+
+#: includes/class-wpec-admin.php:841
+#: includes/class-wpec-admin.php:852
+msgid "— Select —"
+msgstr ""
+
+#: includes/class-wpec-admin.php:892
+msgid "All provinces"
+msgstr ""
+
+#: includes/class-wpec-admin.php:904
+msgid "All municipalities"
+msgstr ""
+
+#: includes/class-wpec-admin.php:908
+#: includes/class-wpec-admin.php:939
+#: includes/class-wpec-admin.php:1211
+msgid "Province"
+msgstr ""
+
+#: includes/class-wpec-admin.php:909
+#: includes/class-wpec-admin.php:940
+#: includes/class-wpec-admin.php:1212
+msgid "Municipality"
+msgstr ""
+
+#: includes/class-wpec-admin.php:910
+#: includes/class-wpec-admin.php:1213
+msgid "Venue"
+msgstr ""
+
+#: includes/class-wpec-admin.php:911
+#: includes/class-wpec-admin.php:942
+msgid "Address"
+msgstr ""
+
+#: includes/class-wpec-admin.php:916
+msgid "No locations found."
+msgstr ""
+
+#: includes/class-wpec-admin.php:935
+msgid "Edit location"
+msgstr ""
+
+#: includes/class-wpec-admin.php:935
+msgid "New location"
+msgstr ""
+
+#: includes/class-wpec-admin.php:941
+msgid "Venue name"
+msgstr ""
+
+#: includes/class-wpec-admin.php:994
+#: includes/class-wpec-admin.php:1261
+#: includes/class-wpec-admin.php:1308
+msgid "Name"
+msgstr ""
+
+#: includes/class-wpec-admin.php:995
+#: includes/class-wpec-admin.php:1036
+msgid "URL"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1000
+msgid "No shows found."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1017
+msgid "Edit show"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1017
+msgid "New show"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1021
+msgid "Show name"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1040
+msgid "Page of the show on this site. Start typing or double-click to see the published pages."
+msgstr ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1058
+#, php-format
+msgid "%d event imported."
+msgid_plural "%d events imported."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1060
+#, php-format
+msgid "%d new location."
+msgid_plural "%d new locations."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1062
+#: includes/class-wpec-admin.php:1354
+#, php-format
+msgid "%d new show."
+msgid_plural "%d new shows."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1066
+#, php-format
+msgid "%d event already existed and was skipped."
+msgid_plural "%d events already existed and were skipped."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1070
+#, php-format
+msgid "%d event without a location was not imported."
+msgid_plural "%d events without a location were not imported."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1074
+#, php-format
+msgid "%d event was skipped as you chose."
+msgid_plural "%d events were skipped as you chose."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wpec-admin.php:1076
+#: includes/class-wpec-admin.php:1364
+msgid "Import completed."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1092
+msgid "Back to events"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1101
+#: includes/class-wpec-admin.php:1230
+#: includes/class-wpec-admin.php:1376
+#: includes/class-wpec-admin.php:1381
+msgid "Import"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1102
+msgid "Upload an XML file with events (<item> elements with <ID>, <title>, <date> and <locations>), such as one exported from this plugin. You will see a preview before importing."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1106
+msgid "Upload and preview"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1116
+#: includes/class-wpec-admin.php:1387
+msgid "Export"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1118
+#: includes/class-wpec-admin.php:1389
+msgid "There is nothing to export yet."
+msgstr ""
+
+#. translators: 1: events, 2: locations, 3: shows
+#: includes/class-wpec-admin.php:1124
+#, php-format
+msgid "Download an XML file with all the events (%1$d), locations (%2$d) and shows (%3$d). You can import it later on this or another site."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1132
+#: includes/class-wpec-admin.php:1395
+msgid "Download XML"
+msgstr ""
+
+#. translators: 1: events, 2: titles, 3: locations, 4: new locations
+#: includes/class-wpec-admin.php:1155
+#, php-format
+msgid "The file contains %1$d events with %2$d different titles and %3$d locations (%4$d do not exist on the site and will be created)."
+msgstr ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1164
+#, php-format
+msgid "%d event has no location and will not be imported."
+msgid_plural "%d events have no location and will not be imported."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1168
+#, php-format
+msgid "%d event has several locations: one event will be created for each."
+msgid_plural "%d events have several locations: one event will be created for each."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wpec-admin.php:1170
+msgid "Events that already exist (same date, location and show) will be skipped."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1178
+msgid "The XML has no shows: choose which show each title belongs to, or create a new one."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1180
+msgid "Title in the XML"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1183
+msgid "Name if new"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1191
+msgid "+ Create new"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1192
+msgid "✕ Do not import"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1206
+msgid "If several titles get the same new name (e.g. “Cortello de amor 2024” and “Cortello de amor 2025” → “Cortello de amor”), a single show will be created."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1214
+msgid "Status"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1223
+msgid "Already exists"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1224
+msgid "Will be created"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1231
+msgid "Upload another file"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1255
+msgid "Create shortcodes with your own name and settings, and paste them into any page or post."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1262
+#: includes/class-wpec-admin.php:1315
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1264
+msgid "Maximum"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1269
+msgid "No shortcodes found."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1276
+msgid "Copied!"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1276
+msgid "Copy"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1278
+msgid "Another plugin or the theme uses this shortcode, so it will not show the events. Change it."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1282
+msgid "No limit"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1304
+msgid "Edit shortcode"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1304
+msgid "New shortcode"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1311
+msgid "For example: Upcoming performances."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1318
+msgid "Leave it empty to create it from the name. Only letters, numbers and underscores."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1330
+msgid "Events to show"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1333
+msgid "Maximum number of events"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1336
+msgid "0 = no limit."
+msgstr ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1358
+#, php-format
+msgid "%d existing show without URL now has the URL from the file."
+msgid_plural "%d existing shows without URL now have the URL from the file."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number
+#: includes/class-wpec-admin.php:1362
+#, php-format
+msgid "%d show already existed and was not changed."
+msgid_plural "%d shows already existed and were not changed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wpec-admin.php:1377
+msgid "Upload an XML file with shows (<show> elements with <name> and <url>), such as one exported from this screen. Shows that do not exist are created; existing ones are not changed, except to add the URL if they had none."
+msgstr ""
+
+#. translators: %d: number of shows
+#: includes/class-wpec-admin.php:1392
+msgid "Download an XML file with the only show (name and URL)."
+msgid_plural "Download an XML file with all %d shows (name and URL)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wpec-admin.php:1399
+msgid "Back to shows"
+msgstr ""
+
+#: includes/class-wpec-importer.php:45
+msgid "No events (<item>) were found in the XML."
+msgstr ""
+
+#: includes/class-wpec-importer.php:133
+msgid "No event with a valid date was found."
+msgstr ""
+
+#: includes/class-wpec-importer.php:249
+msgid "No shows (<show> with <name>) were found in the XML."
+msgstr ""
+
+#: includes/class-wpec-importer.php:298
+msgid "The file is empty."
+msgstr ""
+
+#: includes/class-wpec-importer.php:301
+msgid "The XML cannot contain a DOCTYPE."
+msgstr ""
+
+#. translators: %d: line number
+#: includes/class-wpec-importer.php:313
+#, php-format
+msgid "The XML is not well-formed (line %d)."
+msgstr ""
+
+#: includes/class-wpec-shortcode.php:115
+msgid "There are no scheduled events."
+msgstr ""

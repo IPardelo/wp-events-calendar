@@ -1,0 +1,33 @@
+.wpec-wrap .wpec-table .column-date { width: 22%; }
+.wpec-wrap .wpec-table .column-time { width: 10%; }
+.wpec-wrap .wpec-table .column-actions { width: 130px; }
+.wpec-wrap .wpec-muted { color: #8c8f94; }
+.wpec-wrap .wpec-required { color: #d63638; }
+.wpec-wrap .wpec-delete { color: #b32d2e; }
+.wpec-wrap .wpec-form { max-width: 900px; }
+.wpec-wrap .subsubsub { margin-bottom: 8px; }
+.wpec-wrap .notice ul { margin: 0.5em 0; list-style: disc; padding-left: 1.5em; }
+.wpec-wrap .wpec-card { background: #fff; border: 1px solid #c3c4c7; padding: 4px 20px 16px; max-width: 720px; margin-top: 16px; }
+.wpec-wrap .wpec-table .column-count { width: 80px; }
+.wpec-wrap .wpec-table .column-status { width: 120px; }
+.wpec-wrap .wpec-table select.wpec-map { max-width: 100%; }
+.wpec-wrap h2 { margin-top: 28px; }
+.wpec-wrap .notice.inline p { margin: 0.4em 0; }
+.wpec-wrap .wpec-badge-status { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; }
+.wpec-wrap .wpec-badge-status--new { background: #d7f0dc; color: #135e25; }
+.wpec-wrap .wpec-badge-status--exists { background: #f0f0f1; color: #50575e; }
+.wpec-wrap .wpec-table input.regular-text { width: 100%; max-width: 100%; box-sizing: border-box; }
+.wpec-wrap .wpec-filters { clear: both; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 10px; padding: 10px 12px; background: #fff; border: 1px solid #c3c4c7; }
+.wpec-wrap .wpec-filter select { max-width: 260px; }
+.wpec-wrap .wpec-filter--dates label { color: #50575e; }
+.wpec-wrap .wpec-filter--search { margin-left: auto; }
+.wpec-wrap .wpec-filter--search input { width: 220px; }
+.wpec-wrap .wpec-clear { margin-left: 6px; }
+.wpec-wrap .wpec-results { margin: 0 0 8px; color: #50575e; }
+@media (max-width: 782px) { .wpec-wrap .wpec-filter--search { margin-left: 0; } .wpec-wrap .wpec-filter, .wpec-wrap .wpec-filter select, .wpec-wrap .wpec-filter--search input { width: 100%; max-width: 100%; } }
+.wpec-wrap .wpec-filter--actions { display: inline-flex; align-items: center; gap: 6px; }
+.wpec-wrap .wpec-code { font-size: 13px; padding: 3px 6px; }
+.wpec-wrap .wpec-warning { color: #b32d2e; font-size: 12px; }
+.wpec-wrap .wpec-radio { display: inline-block; padding-right: 22px; }
+.wpec-wrap .wpec-sc-code { white-space: nowrap; }
+.wpec-wrap input#tag { width: 18em; margin: 0 2px; }
