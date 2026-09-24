@@ -35,9 +35,10 @@ Naceu para substituír [**Modern Events Calendar**](https://wordpress.org/plugin
 
 - Catro menús de administración: **Eventos**, **Localizacións**, **Espectáculos** e **Shortcodes**.
 - Eventos dun día ou de varios (data de inicio e de fin), con hora opcional: se non ten hora, non se amosa.
-- Localizacións con provincia, concello, nome do local e enderezo; espectáculos con nome e URL a unha páxina da web.
+- Localizacións con provincia, concello, nome do local e enderezo; espectáculos con nome, URL a unha páxina da web e unha cor para identificalos na lista.
 - Shortcode `[eventos]` con filtros (próximos / pasados / todos, límite, espectáculo, localización, provincia, concello).
-- Menú **Shortcodes** para crear shortcodes propios (nome, eventos próximos / pasados / todos e número máximo).
+- Menú **Shortcodes** para crear shortcodes propios (nome, eventos próximos / pasados / todos, número máximo e filtro).
+- Filtro opcional enriba da lista pública para que os visitantes busquen por espectáculo, provincia e datas.
 - Filtros e buscador de texto en todos os listados do panel.
 - **Importar / Exportar** en XML: importa e exporta todo para copias de seguridade ou para pasar os datos a outra web.
 - **Importar / Exportar** só os espectáculos (nome e URL) dende a pantalla de Espectáculos.
@@ -77,7 +78,9 @@ Ao activar, o plugin crea automaticamente as súas táboas na base de datos (`wp
 Antes de crear un evento cómpre ter polo menos unha localización e un espectáculo:
 
 - **Eventos → Localizacións**: provincia, concello, nome do local e enderezo.
-- **Eventos → Espectáculos**: nome e URL. O campo URL suxire as páxinas publicadas da web para ligar o espectáculo á súa páxina.
+- **Eventos → Espectáculos**: nome, URL e cor. O campo URL suxire as páxinas publicadas da web para ligar o espectáculo á súa páxina.
+
+A cor escóllese entre 10 e amósase nun círculo pequeno diante do nome do espectáculo na lista pública para identificalo máis rápidamente.
 
 Na pantalla de Espectáculos, o botón **Importar / Exportar** permite descargar só os espectáculos nun XML e importalos noutra web. Ao importar créanse os que non existen (compáranse polo nome, sen ter en conta maiúsculas nin acentos); os que xa existen non se cambian, agás para engadirlles a URL se non tiñan.
 
@@ -126,14 +129,16 @@ Atributos opcionais:
 | `provincia` | nome da provincia | — |
 | `ayuntamiento` | nome do concello | — |
 | `vacio` | texto cando non hai eventos | «Non hai eventos programados.» |
+| `filtro` | `si`, `no`: filtro por espectáculo, provincia e datas enriba da lista | `no` |
 
 ```
 [eventos limite="5"]
 [eventos mostrar="pasados" limite="10"]
 [eventos provincia="Pontevedra"]
+[eventos filtro="si"]
 ```
 
-Os atributos admiten tamén nomes en inglés e galego (`show` / `amosar`, `limit`, `order` / `orde`, `municipality` / `concello`, `empty` / `baleiro`…), e hai os alias `[wpec_eventos]` e `[wpec_events]` por se outro plugin xa usa `[eventos]`.
+Os atributos admiten tamén nomes en inglés e galego (`show` / `amosar`, `limit`, `order` / `orde`, `municipality` / `concello`, `empty` / `baleiro`, `filter`…), e hai os alias `[wpec_eventos]` e `[wpec_events]` por se outro plugin xa usa `[eventos]`.
 
 ### 4. Importar / Exportar
 
@@ -156,6 +161,7 @@ En **Eventos → Shortcodes** podes crear shortcodes propios para non ter que le
 | Shortcode | A etiqueta que se pega na páxina. Se o deixas baleiro, créase a partir do nome (`[proximas_funcions]`). Só letras, números e guións baixos. |
 | Eventos que amosar | **Próximos**, **Pasados** ou **Todos**. |
 | Número máximo de eventos | Cantos eventos amosa como máximo (`0` = sen límite). |
+| Filtros | Se está marcado, amosa un filtro enriba da lista. |
 
 Na lista, o botón **Copiar** copia o shortcode para pegalo directamente nunha páxina ou entrada:
 
@@ -164,6 +170,15 @@ Na lista, o botón **Copiar** copia o shortcode para pegalo directamente nunha p
 ```
 
 Tamén acepta os mesmos atributos que `[eventos]` para cambiar algo puntualmente, por exemplo `[proximas_funcions limite="1"]`.
+
+#### Filtro da lista
+
+Cando un shortcode ten **Filtros** activado (ou `filtro="si"`), enriba da lista aparece un formulario con:
+
+- **Espectáculo** e **Provincia**: só ofrecen os que teñen eventos nese shortcode. Se só hai unha opción, ou se o shortcode xa filtra por ese campo (`espectaculo`, `provincia`, `ayuntamiento` ou `localizacion`), o despregable non se amosa.
+- **Data**: rango *dende / ata*; amosa os eventos que caen, polo menos en parte, dentro del.
+
+O filtro recarga a mesma páxina (parámetros `ev_espectaculo`, `ev_provincia`, `ev_dende` e `ev_ata` na URL, polo que se pode compartir a ligazón filtrada) e volve á altura da lista. O límite de eventos aplícase despois de filtrar. Se hai varios shortcodes con filtro na mesma páxina, cada un usa os seus propios parámetros (`ev2_…`, `ev3_…`) e non se mesturan.
 
 > Non se pode usar un nome que xa use outro shortcode deste plugin, `[eventos]`, WordPress, outro plugin ou o tema. Se máis adiante outro plugin empeza a usar o mesmo, a lista avísao en vermello.
 
@@ -178,6 +193,8 @@ O aspecto da lista sae de variables CSS definidas en `assets/css/wpec-public.css
   --wpec-muted: #777777;                     /* texto secundario (localización, ano) */
 }
 ```
+
+O filtro usa as clases `.wpec-filter`, `.wpec-filter__field` e `.wpec-filter__submit`, e o círculo da cor do espectáculo, `.wpec-color`.
 
 Para cambiar o HTML de cada evento está o filtro `wpec_event_html( $html, $event, $atts )`, e para cambiar quen pode xestionar o calendario, `wpec_capability` (por defecto `edit_pages`).
 
@@ -195,6 +212,12 @@ Hai eventos que o usan. Cambia ou elimina eses eventos primeiro; así non quedan
 **Ao importar, un evento non aparece.**
 Os eventos sen localización non se importan, e os que xa existen omítense. O resumo final da importación indica cantos se saltaron e por que.
 
+**O filtro non amosa o despregable de espectáculos (ou de provincias).**
+Só aparece se hai polo menos dúas opcións entre os eventos dese shortcode e se o propio shortcode non filtra xa por ese campo.
+
+**Un espectáculo non ten o círculo de cor.**
+Os espectáculos creados antes da versión 1.1.0 quedan en **Sen cor**. Edítao, escolle unha cor e garda.
+
 **Outro plugin xa usa `[eventos]`.**
 Usa `[wpec_eventos]` ou `[wpec_events]`: funcionan igual e aceptan os mesmos atributos.
 
@@ -205,14 +228,14 @@ wp-events-calendar/
 ├── wp-events-calendar.php          # Cabeceira do plugin, constantes, carga de traducións e clases
 ├── uninstall.php                   # Borra táboas e opcións ao desinstalar
 ├── includes/
-│   ├── class-wpec-db.php           # Táboas e consultas (eventos, localizacións, espectáculos)
+│   ├── class-wpec-db.php           # Táboas e consultas (eventos, localizacións, espectáculos, shortcodes)
 │   ├── class-wpec-admin.php        # Menús, listados con filtros e formularios do escritorio
 │   ├── class-wpec-importer.php     # Importación de XML con vista previa
 │   ├── class-wpec-exporter.php     # Exportación de todo a XML
 │   └── class-wpec-shortcode.php    # Shortcode [eventos] e HTML da lista
 ├── assets/
 │   ├── css/
-│   │   ├── wpec-public.css         # Estilos da lista e variables de personalización
+│   │   ├── wpec-public.css         # Estilos da lista, do filtro e variables de personalización
 │   │   └── wpec-admin.css          # Estilos do escritorio
 │   ├── js/
 │   │   └── wpec-admin.js           # Despregable de concellos segundo a provincia e botón Copiar
@@ -225,6 +248,7 @@ wp-events-calendar/
 
 | Versión | Cambios |
 |---|---|
+| 1.1.0 | Cor para cada espectáculo e opción **Filtros** nos shortcodes. |
 | 1.0.0 | Versión inicial. |
 
 ## Licenza

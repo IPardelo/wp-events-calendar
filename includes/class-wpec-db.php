@@ -40,6 +40,7 @@ class WPEC_DB {
 				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 				name varchar(255) NOT NULL,
 				url varchar(2048) NOT NULL DEFAULT '',
+				color varchar(7) NOT NULL DEFAULT '',
 				PRIMARY KEY  (id),
 				KEY name (name(191))
 			) $charset;"
@@ -79,6 +80,7 @@ class WPEC_DB {
 				tag varchar(64) NOT NULL,
 				show_when varchar(10) NOT NULL DEFAULT 'upcoming',
 				max_events int(10) unsigned NOT NULL DEFAULT 0,
+				show_filter tinyint(1) unsigned NOT NULL DEFAULT 0,
 				PRIMARY KEY  (id),
 				UNIQUE KEY tag (tag)
 			) $charset;"
@@ -126,11 +128,16 @@ class WPEC_DB {
 			'name' => $data['name'],
 			'url'  => $data['url'],
 		);
+		// El color solo se toca si viene en los datos (el importador no lo envía y no debe borrarlo).
+		if ( array_key_exists( 'color', $data ) ) {
+			$row['color'] = $data['color'];
+		}
+		$fmt = array_fill( 0, count( $row ), '%s' );
 		if ( $id ) {
-			$wpdb->update( self::table( 'shows' ), $row, array( 'id' => $id ), array( '%s', '%s' ), array( '%d' ) );
+			$wpdb->update( self::table( 'shows' ), $row, array( 'id' => $id ), $fmt, array( '%d' ) );
 			return $id;
 		}
-		$wpdb->insert( self::table( 'shows' ), $row, array( '%s', '%s' ) );
+		$wpdb->insert( self::table( 'shows' ), $row, $fmt );
 		return (int) $wpdb->insert_id;
 	}
 
@@ -268,7 +275,7 @@ class WPEC_DB {
 		list( $where, $params ) = self::events_where( $args );
 
 		$order = ( isset( $args['order'] ) && 'DESC' === strtoupper( $args['order'] ) ) ? 'DESC' : 'ASC';
-		$sql   = 'SELECT e.*, s.name AS show_name, s.url AS show_url,
+		$sql   = 'SELECT e.*, s.name AS show_name, s.url AS show_url, s.color AS show_color,
 				l.province, l.municipality, l.venue, l.address
 			FROM ' . self::table( 'events' ) . ' e
 			LEFT JOIN ' . self::table( 'shows' ) . ' s ON s.id = e.show_id
@@ -397,12 +404,13 @@ class WPEC_DB {
 	public static function save_shortcode( $data, $id = 0 ) {
 		global $wpdb;
 		$row = array(
-			'name'       => $data['name'],
-			'tag'        => $data['tag'],
-			'show_when'  => $data['show_when'],
-			'max_events' => (int) $data['max_events'],
+			'name'        => $data['name'],
+			'tag'         => $data['tag'],
+			'show_when'   => $data['show_when'],
+			'max_events'  => (int) $data['max_events'],
+			'show_filter' => empty( $data['show_filter'] ) ? 0 : 1,
 		);
-		$fmt = array( '%s', '%s', '%s', '%d' );
+		$fmt = array( '%s', '%s', '%s', '%d', '%d' );
 		if ( $id ) {
 			$wpdb->update( self::table( 'shortcodes' ), $row, array( 'id' => $id ), $fmt, array( '%d' ) );
 			return $id;

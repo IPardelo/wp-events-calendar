@@ -57,8 +57,8 @@ class WPEC_Admin {
 		if ( false === strpos( (string) $hook, 'wpec-' ) ) {
 			return;
 		}
-		wp_enqueue_style( 'wpec-admin', WPEC_URL . 'assets/css/wpec-admin.css', array(), WPEC_VERSION );
-		wp_enqueue_script( 'wpec-admin', WPEC_URL . 'assets/js/wpec-admin.js', array(), WPEC_VERSION, true );
+		wp_enqueue_style( 'wpec-admin', WPEC_URL . 'assets/css/wpec-admin.css', array(), wpec_asset_version( 'assets/css/wpec-admin.css' ) );
+		wp_enqueue_script( 'wpec-admin', WPEC_URL . 'assets/js/wpec-admin.js', array(), wpec_asset_version( 'assets/js/wpec-admin.js' ), true );
 	}
 
 	/* =====================================================================
@@ -204,8 +204,9 @@ class WPEC_Admin {
 	private function save_show( $id ) {
 		$raw_url = isset( $_POST['url'] ) ? trim( wp_unslash( $_POST['url'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$data    = array(
-			'name' => $this->posted_text( 'name' ),
-			'url'  => '' === $raw_url ? '' : esc_url_raw( $raw_url ),
+			'name'  => $this->posted_text( 'name' ),
+			'url'   => '' === $raw_url ? '' : esc_url_raw( $raw_url ),
+			'color' => self::sanitize_color( $this->posted_text( 'color' ) ),
 		);
 
 		if ( '' === $data['name'] ) {
@@ -221,10 +222,11 @@ class WPEC_Admin {
 	private function save_shortcode( $id ) {
 		$raw_tag = $this->posted_text( 'tag' );
 		$data    = array(
-			'name'       => $this->posted_text( 'name' ),
-			'tag'        => self::make_tag( '' !== $raw_tag ? $raw_tag : $this->posted_text( 'name' ) ),
-			'show_when'  => $this->posted_text( 'show_when' ),
-			'max_events' => isset( $_POST['max_events'] ) ? absint( $_POST['max_events'] ) : 0,
+			'name'        => $this->posted_text( 'name' ),
+			'tag'         => self::make_tag( '' !== $raw_tag ? $raw_tag : $this->posted_text( 'name' ) ),
+			'show_when'   => $this->posted_text( 'show_when' ),
+			'max_events'  => isset( $_POST['max_events'] ) ? absint( $_POST['max_events'] ) : 0,
+			'show_filter' => empty( $_POST['show_filter'] ) ? 0 : 1, // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		);
 
 		if ( '' === $data['name'] ) {
@@ -1001,13 +1003,38 @@ class WPEC_Admin {
 		}
 		foreach ( $items as $s ) {
 			echo '<tr>';
-			echo '<td><strong>' . esc_html( $s->name ) . '</strong></td>';
+			echo '<td>' . self::color_dot( isset( $s->color ) ? $s->color : '' ) . '<strong>' . esc_html( $s->name ) . '</strong></td>';
 			echo '<td>' . ( $s->url ? '<a href="' . esc_url( $s->url ) . '" target="_blank" rel="noopener">' . esc_html( $s->url ) . '</a>' : '<span class="wpec-muted">—</span>' ) . '</td>';
 			echo '<td>';
 			$this->row_actions( 'wpec-shows', $s->id );
 			echo '</td></tr>';
 		}
 		echo '</tbody></table></div>';
+	}
+
+	/**
+	 * Colores que se pueden asignar a un espectáculo.
+	 *
+	 * @return string[]
+	 */
+	public static function show_colors() {
+		return array( '#FFD1DC', '#AEC6CF', '#77DD77', '#FDFD96', '#C3B1E1', '#FFB347', '#FFDAB9', '#AAF0D1', '#B2FFFF', '#FFB7B2' );
+	}
+
+	/**
+	 * Devuelve el color si está en la paleta, o '' (sin color).
+	 */
+	public static function sanitize_color( $color ) {
+		$color = strtoupper( trim( (string) $color ) );
+		return in_array( $color, self::show_colors(), true ) ? $color : '';
+	}
+
+	/**
+	 * Círculo con el color de un espectáculo (vacío si no tiene).
+	 */
+	public static function color_dot( $color, $class = 'wpec-color' ) {
+		$color = self::sanitize_color( $color );
+		return $color ? '<span class="' . esc_attr( $class ) . '" style="background-color:' . esc_attr( $color ) . '" aria-hidden="true"></span>' : '';
 	}
 
 	private function form_show() {
@@ -1038,6 +1065,27 @@ class WPEC_Admin {
 			'<input type="url" class="large-text" id="url" name="url" list="wpec-pages" placeholder="https://" value="' . esc_attr( $item ? $item->url : '' ) . '">'
 			. $datalist
 			. '<p class="description">' . esc_html__( 'Page of the show on this site. Start typing or double-click to see the published pages.', 'wp-events-calendar' ) . '</p>'
+		);
+
+		// Paleta de colores en círculos (radios). La primera opción es «sin color».
+		$current  = self::sanitize_color( $item && isset( $item->color ) ? $item->color : '' );
+		$swatches = sprintf(
+			'<label class="wpec-swatch wpec-swatch--none" title="%1$s"><input type="radio" name="color" value=""%2$s><span class="wpec-swatch__dot"></span><span class="screen-reader-text">%1$s</span></label>',
+			esc_attr__( 'No color', 'wp-events-calendar' ),
+			checked( $current, '', false )
+		);
+		foreach ( self::show_colors() as $color ) {
+			$swatches .= sprintf(
+				'<label class="wpec-swatch" title="%1$s"><input type="radio" name="color" value="%1$s"%2$s><span class="wpec-swatch__dot" style="background-color:%1$s"></span><span class="screen-reader-text">%1$s</span></label>',
+				esc_attr( $color ),
+				checked( $current, $color, false )
+			);
+		}
+		$this->field_row(
+			__( 'Color', 'wp-events-calendar' ),
+			'color',
+			'<fieldset class="wpec-swatches"><legend class="screen-reader-text">' . esc_html__( 'Color', 'wp-events-calendar' ) . '</legend>' . $swatches . '</fieldset>'
+			. '<p class="description">' . esc_html__( 'It appears in a small circle next to the show name in the event lists.', 'wp-events-calendar' ) . '</p>'
 		);
 
 		$this->form_close( 'wpec-shows', $id );
@@ -1262,11 +1310,12 @@ class WPEC_Admin {
 		echo '<th>' . esc_html__( 'Shortcode', 'wp-events-calendar' ) . '</th>';
 		echo '<th>' . esc_html__( 'Events', 'wp-events-calendar' ) . '</th>';
 		echo '<th>' . esc_html__( 'Maximum', 'wp-events-calendar' ) . '</th>';
+		echo '<th>' . esc_html__( 'Filters', 'wp-events-calendar' ) . '</th>';
 		echo '<th class="column-actions">' . esc_html__( 'Actions', 'wp-events-calendar' ) . '</th>';
 		echo '</tr></thead><tbody>';
 
 		if ( ! $items ) {
-			echo '<tr><td colspan="5">' . esc_html__( 'No shortcodes found.', 'wp-events-calendar' ) . '</td></tr>';
+			echo '<tr><td colspan="6">' . esc_html__( 'No shortcodes found.', 'wp-events-calendar' ) . '</td></tr>';
 		}
 		foreach ( $items as $sc ) {
 			$code = '[' . $sc->tag . ']';
@@ -1280,6 +1329,7 @@ class WPEC_Admin {
 			echo '</td>';
 			echo '<td>' . esc_html( isset( $labels[ $sc->show_when ] ) ? $labels[ $sc->show_when ] : $sc->show_when ) . '</td>';
 			echo '<td>' . ( $sc->max_events ? (int) $sc->max_events : esc_html__( 'No limit', 'wp-events-calendar' ) ) . '</td>';
+			echo '<td>' . ( empty( $sc->show_filter ) ? esc_html__( 'No', 'wp-events-calendar' ) : esc_html__( 'Yes', 'wp-events-calendar' ) ) . '</td>';
 			echo '<td>';
 			$this->row_actions( 'wpec-shortcodes', $sc->id );
 			echo '</td></tr>';
@@ -1334,6 +1384,13 @@ class WPEC_Admin {
 			'max_events',
 			'<input type="number" class="small-text" id="max_events" name="max_events" min="0" step="1" value="' . esc_attr( $v( 'max_events', '0' ) ) . '">'
 			. '<p class="description">' . esc_html__( '0 = no limit.', 'wp-events-calendar' ) . '</p>'
+		);
+
+		$this->field_row(
+			__( 'Filters', 'wp-events-calendar' ),
+			'show_filter',
+			'<label><input type="checkbox" id="show_filter" name="show_filter" value="1"' . checked( $v( 'show_filter', '0' ), '1', false ) . '> '
+			. esc_html__( 'Show a filter by show, province and date above the list.', 'wp-events-calendar' ) . '</label>'
 		);
 
 		$this->form_close( 'wpec-shortcodes', $id );

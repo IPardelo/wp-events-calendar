@@ -3,7 +3,7 @@
  * Plugin Name:       Wordpress events calendar
  * Plugin URI:        https://github.com/IPardelo/wp-events-calendar
  * Description:       Mostra os teus eventos dunha forma sinxela.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            IPardelo
@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPEC_VERSION', '1.0.0' );
-define( 'WPEC_DB_VERSION', '1.1.0' );
+define( 'WPEC_VERSION', '1.1.0' );
+define( 'WPEC_DB_VERSION', '1.4.0' );
 define( 'WPEC_FILE', __FILE__ );
 define( 'WPEC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPEC_URL', plugin_dir_url( __FILE__ ) );
@@ -29,6 +29,18 @@ require_once WPEC_PATH . 'includes/class-wpec-exporter.php';
 require_once WPEC_PATH . 'includes/class-wpec-shortcode.php';
 
 register_activation_hook( __FILE__, array( 'WPEC_DB', 'install' ) );
+
+/**
+ * Versión de un fichero de assets: versión del plugin + fecha de modificación,
+ * para que el navegador no use una copia antigua del CSS/JS tras cada cambio.
+ *
+ * @param string $file Ruta relativa a la carpeta del plugin.
+ * @return string
+ */
+function wpec_asset_version( $file ) {
+	$mtime = @filemtime( WPEC_PATH . $file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+	return $mtime ? WPEC_VERSION . '.' . $mtime : WPEC_VERSION;
+}
 
 // Traducciones: se cargan desde /languages según el idioma de la web (o del usuario en el admin).
 add_action(

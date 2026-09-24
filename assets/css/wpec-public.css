@@ -102,3 +102,74 @@
 		font-size: 1.3em;
 	}
 }
+
+/* Filtro encima de la lista (opción «Filtros» del shortcode). */
+.wpec-events .wpec-filter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 0.75em 1em;
+	margin: 0 0 1.25em;
+	padding: 0;
+	font-size: 0.95em;
+}
+
+.wpec-events .wpec-filter__field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.wpec-events .wpec-filter__label {
+	float: none;
+	padding: 0;
+	font-weight: 600;
+	font-size: 0.9em;
+}
+
+.wpec-events .wpec-filter__dates {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.wpec-events .wpec-filter__dates .wpec-filter__label {
+	width: 100%;
+}
+
+.wpec-events .wpec-filter__sub {
+	color: var(--wpec-muted);
+}
+
+.wpec-events .wpec-filter select,
+.wpec-events .wpec-filter input[type="date"] {
+	max-width: 100%;
+}
+
+.wpec-events .wpec-filter__actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75em;
+}
+
+@media (max-width: 480px) {
+	.wpec-events .wpec-filter__field:not(.wpec-filter__dates),
+	.wpec-events .wpec-filter select {
+		width: 100%;
+	}
+}
+
+/* Círculo con el color del espectáculo, delante del título. */
+.wpec-events .wpec-color {
+	display: inline-block;
+	width: 0.6em;
+	height: 0.6em;
+	margin-right: 0.45em;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+	vertical-align: 0.1em;
+}

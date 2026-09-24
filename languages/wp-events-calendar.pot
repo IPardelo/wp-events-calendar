@@ -603,7 +603,7 @@ msgstr ""
 msgid "New shortcode"
 msgstr ""
 
-#: includes/class-wpec-admin.php:1311
+#: includes/class-wpec-admin.php:1285
 msgid "For example: Upcoming performances."
 msgstr ""
 
@@ -682,4 +682,38 @@ msgstr ""
 
 #: includes/class-wpec-shortcode.php:115
 msgid "There are no scheduled events."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1266
+#: includes/class-wpec-admin.php:1343
+msgid "Filters"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1285
+msgid "Yes"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1285
+msgid "No"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1346
+msgid "Show a filter by show, province and date above the list."
+msgstr ""
+
+#: includes/class-wpec-shortcode.php:170
+msgid "No events match the filter."
+msgstr ""
+
+#: includes/class-wpec-admin.php:1085
+#: includes/class-wpec-admin.php:1087
+msgid "Color"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1074
+msgid "No color"
+msgstr ""
+
+#: includes/class-wpec-admin.php:1088
+msgid "It appears in a small circle next to the show name in the event lists."
 msgstr ""

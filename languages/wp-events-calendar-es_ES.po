@@ -598,7 +598,7 @@ msgstr "Editar shortcode"
 msgid "New shortcode"
 msgstr "Nuevo shortcode"
 
-#: includes/class-wpec-admin.php:1311
+#: includes/class-wpec-admin.php:1285
 msgid "For example: Upcoming performances."
 msgstr "Por ejemplo: Próximas funciones."
 
@@ -678,3 +678,37 @@ msgstr "El XML no está bien formado (línea %d)."
 #: includes/class-wpec-shortcode.php:115
 msgid "There are no scheduled events."
 msgstr "No hay eventos programados."
+
+#: includes/class-wpec-admin.php:1266
+#: includes/class-wpec-admin.php:1343
+msgid "Filters"
+msgstr "Filtros"
+
+#: includes/class-wpec-admin.php:1285
+msgid "Yes"
+msgstr "Sí"
+
+#: includes/class-wpec-admin.php:1285
+msgid "No"
+msgstr "No"
+
+#: includes/class-wpec-admin.php:1346
+msgid "Show a filter by show, province and date above the list."
+msgstr "Mostrar encima de la lista un filtro por espectáculo, provincia y fecha."
+
+#: includes/class-wpec-shortcode.php:170
+msgid "No events match the filter."
+msgstr "No hay eventos que coincidan con el filtro."
+
+#: includes/class-wpec-admin.php:1085
+#: includes/class-wpec-admin.php:1087
+msgid "Color"
+msgstr "Color"
+
+#: includes/class-wpec-admin.php:1074
+msgid "No color"
+msgstr "Sin color"
+
+#: includes/class-wpec-admin.php:1088
+msgid "It appears in a small circle next to the show name in the event lists."
+msgstr "Aparece en un pequeño círculo junto al nombre del espectáculo en las listas de eventos."
