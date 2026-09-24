@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ficheiro de exemplo para Eventos → Importar / Exportar.
+  É o mesmo formato que xera a exportación do plugin.
+
+  Cada <item> é un evento:
+    <ID>          identificador do evento no ficheiro (só informativo).
+    <title>       nome do espectáculo.
+    <date>
+      <start>     data (AAAA-MM-DD) e hora en formato de 12 h (<hour>, <minutes>, <ampm>).
+      <end>       data de fin; se é igual á de inicio, o evento dura un só día.
+      <hide_time> 1 = evento sen hora (non se amosa na lista).
+    <locations>   localización: <province>, <municipality>, <venue> (local) e <street> (enderezo).
+                  <name> e <address> repiten concello/provincia e local.
+    <show>        espectáculo: <name> e <url> (páxina da web).
+
+  <catalog> leva todas as localizacións e espectáculos, tamén os que non teñen eventos.
+-->
+<events generator="WP Events Calendar 1.4.0">
+
+  <!-- Evento dun día con hora -->
+  <item>
+    <ID>1</ID>
+    <title>Cortello de Amor</title>
+    <date>
+      <start>
+        <date>2026-10-16</date>
+        <hour>8</hour>
+        <minutes>30</minutes>
+        <ampm>PM</ampm>
+      </start>
+      <end>
+        <date>2026-10-16</date>
+        <hour>9</hour>
+        <minutes>30</minutes>
+        <ampm>PM</ampm>
+      </end>
+    </date>
+    <locations>
+      <item>
+        <id>1</id>
+        <name>Vimianzo, A Coruña</name>
+        <address>Casa da Cultura de Vimianzo</address>
+        <province>A Coruña</province>
+        <municipality>Vimianzo</municipality>
+        <venue>Casa da Cultura de Vimianzo</venue>
+        <street>Rúa da Cultura, 1</street>
+      </item>
+    </locations>
+    <show>
+      <id>1</id>
+      <name>Cortello de Amor</name>
+      <url>https://example.com/cortello-de-amor/</url>
+    </show>
+  </item>
+
+  <!-- Evento sen hora: na lista só se amosa a data -->
+  <item>
+    <ID>2</ID>
+    <title>Brazaletes</title>
+    <date>
+      <start>
+        <date>2026-11-07</date>
+      </start>
+      <end>
+        <date>2026-11-07</date>
+      </end>
+      <hide_time>1</hide_time>
+    </date>
+    <locations>
+      <item>
+        <id>2</id>
+        <name>Muxía, A Coruña</name>
+        <address>Salón do Voluntariado</address>
+        <province>A Coruña</province>
+        <municipality>Muxía</municipality>
+        <venue>Salón do Voluntariado</venue>
+        <street />
+      </item>
+    </locations>
+    <show>
+      <id>2</id>
+      <name>Brazaletes</name>
+      <url>https://example.com/brazaletes/</url>
+    </show>
+  </item>
+
+  <!-- Evento de varios días -->
+  <item>
+    <ID>3</ID>
+    <title>Cortello de Amor</title>
+    <date>
+      <start>
+        <date>2026-12-04</date>
+        <hour>7</hour>
+        <minutes>0</minutes>
+        <ampm>PM</ampm>
+      </start>
+      <end>
+        <date>2026-12-06</date>
+        <hour>8</hour>
+        <minutes>0</minutes>
+        <ampm>PM</ampm>
+      </end>
+    </date>
+    <locations>
+      <item>
+        <id>3</id>
+        <name>Vigo, Pontevedra</name>
+        <address>Auditorio Municipal de Vigo</address>
+        <province>Pontevedra</province>
+        <municipality>Vigo</municipality>
+        <venue>Auditorio Municipal de Vigo</venue>
+        <street>Avenida do Porto, 10</street>
+      </item>
+    </locations>
+    <show>
+      <id>1</id>
+      <name>Cortello de Amor</name>
+      <url>https://example.com/cortello-de-amor/</url>
+    </show>
+  </item>
+
+  <catalog>
+    <locations>
+      <item>
+        <id>1</id>
+        <name>Vimianzo, A Coruña</name>
+        <address>Casa da Cultura de Vimianzo</address>
+        <province>A Coruña</province>
+        <municipality>Vimianzo</municipality>
+        <venue>Casa da Cultura de Vimianzo</venue>
+        <street>Rúa da Cultura, 1</street>
+      </item>
+      <item>
+        <id>2</id>
+        <name>Muxía, A Coruña</name>
+        <address>Salón do Voluntariado</address>
+        <province>A Coruña</province>
+        <municipality>Muxía</municipality>
+        <venue>Salón do Voluntariado</venue>
+        <street />
+      </item>
+      <item>
+        <id>3</id>
+        <name>Vigo, Pontevedra</name>
+        <address>Auditorio Municipal de Vigo</address>
+        <province>Pontevedra</province>
+        <municipality>Vigo</municipality>
+        <venue>Auditorio Municipal de Vigo</venue>
+        <street>Avenida do Porto, 10</street>
+      </item>
+      <!-- Localización sen eventos: tamén se importa -->
+      <item>
+        <id>4</id>
+        <name>Lugo, Lugo</name>
+        <address>Auditorio Gustavo Freire</address>
+        <province>Lugo</province>
+        <municipality>Lugo</municipality>
+        <venue>Auditorio Gustavo Freire</venue>
+        <street />
+      </item>
+    </locations>
+    <shows>
+      <show>
+        <id>1</id>
+        <name>Cortello de Amor</name>
+        <url>https://example.com/cortello-de-amor/</url>
+      </show>
+      <show>
+        <id>2</id>
+        <name>Brazaletes</name>
+        <url>https://example.com/brazaletes/</url>
+      </show>
+      <!-- Espectáculo sen eventos: tamén se importa -->
+      <show>
+        <id>3</id>
+        <name>A Nai</name>
+        <url />
+      </show>
+    </shows>
+  </catalog>
+
+</events>
